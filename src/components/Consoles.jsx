@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Console from "./Console";
 
 function Consoles() {
   const [consoles, setConsoles] = useState([]);
@@ -12,13 +13,28 @@ function Consoles() {
     });
   }, []);
 
+  if (consoles.length === 0) {
+    return <p>Loading!</p>;
+  }
+
+  if (!!selectedConsole) {
+    return (
+      <div>
+        <Console id={selectedConsole} />
+        <button onClick={() => setSelectedConsole(null)}>Back</button>
+      </div>
+    );
+  }
+
   return (
     <div>
       {consoles.map((console) => {
         return (
           <p key={console.id}>
-            <p>{console.name}</p>
-            <img src={console.image} alt={console.name}></img>
+            <button onClick={() => setSelectedConsole(console.id)}>
+              {console.name}
+            </button>
+            {/* <img src={console.image} alt={console.name}></img> */}
           </p>
         );
       })}
