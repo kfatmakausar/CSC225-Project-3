@@ -14,21 +14,35 @@ function Consoles() {
   }, []);
 
   if (consoles.length === 0) {
-    return <p>Loading!</p>;
+    return (
+      <div class="d-flex justify-content-center mt-5">
+        <div class="spinner-grow" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
   }
 
   if (!!selectedConsole) {
     return (
       <div>
         <Console id={selectedConsole} />
-        <button onClick={() => setSelectedConsole(null)}>Back</button>
+        <div class="col d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-dark btn-lg btn-block mt-5 w-50"
+            onClick={() => setSelectedConsole(null)}
+          >
+            Back
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
     <div class="jumbotron mt-5">
-      <h1 class="display-4 text-center">Console Catalog</h1>
+      <h1 class="display-3 text-center">Console Catalog</h1>
       <p class="lead text-center">
         Browse throught our catalog and choose your favorite console!
       </p>
@@ -45,7 +59,7 @@ function Consoles() {
                   style={{ height: "250px" }}
                 ></img>
                 <div class="card-body">
-                  <h5 class="card-title text-center">{console.name}</h5>
+                  <h4 class="card-title text-center">{console.name}</h4>
                 </div>
                 <button
                   type="button"
@@ -64,16 +78,3 @@ function Consoles() {
 }
 
 export default Consoles;
-
-// {consoles.map((console) => {
-//     return (
-//       <p key={console.id}>
-//         <button class = "btn btn-primary" onClick={() => setSelectedConsole(console.id)}>
-//           Learn More
-//         </button>
-//       </p>
-// <img src={console.image} class="card-img-top" alt={console.name}>
-// <div class="card-body">
-// <h5 class="card-title">{console.name}</h5>
-// );
-//   })}
