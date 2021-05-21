@@ -24,7 +24,12 @@ function Console(props) {
   return (
     <div class="col d-flex justify-content-center">
       <div class="card w-50 d-flex p-2 mt-5">
-        <img src={console.image} class="card-img-top" alt={console.name}></img>
+        <img
+          src={console.image}
+          class="card-img-top"
+          alt={console.name}
+          style={{ height: "250px" }}
+        ></img>
         <div class="card-body">
           <h4 class="card-title">{console.name}</h4>
           <p>Price: ${console.price}</p>
